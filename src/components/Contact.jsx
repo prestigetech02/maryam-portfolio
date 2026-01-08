@@ -6,7 +6,8 @@ import {
   FaInstagram, 
   FaFacebook, 
   FaLinkedin,
-  FaTwitter 
+  FaTwitter,
+  FaPaperPlane
 } from 'react-icons/fa'
 import { SiTiktok } from 'react-icons/si'
 import './Contact.css'
@@ -142,17 +143,19 @@ const Contact = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="contact-content"
         >
-          <motion.h2 className="section-title" variants={itemVariants}>
-            Get In Touch
-          </motion.h2>
-          <motion.p className="contact-subtitle" variants={itemVariants}>
-            Let's collaborate and bring your brand's social media presence to
-            the next level!
-          </motion.p>
-
           <div className="contact-wrapper">
             {/* Left Side - Contact Info */}
             <motion.div className="contact-left" variants={itemVariants}>
+              <div className="contact-left-header">
+                <motion.h2 className="section-title left-align" variants={itemVariants}>
+                  Get In Touch
+                </motion.h2>
+                <motion.p className="contact-intro" variants={itemVariants}>
+                  Let's collaborate and bring your brand's social media presence to
+                  the next level!
+                </motion.p>
+              </div>
+
               <div className="contact-info-cards">
                 {contactInfo.map((info, index) => (
                   <motion.a
@@ -160,7 +163,7 @@ const Contact = () => {
                     href={info.link}
                     className="contact-card"
                     variants={itemVariants}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.01 }}
                     transition={{ duration: 0.2 }}
                   >
                     <div className="contact-icon">{info.icon}</div>
@@ -173,7 +176,7 @@ const Contact = () => {
               </div>
 
               <motion.div className="social-media" variants={itemVariants}>
-                <h3 className="social-title">Connect With Me</h3>
+                <h3 className="social-title">Follow Me</h3>
                 <div className="social-links">
                   {socialLinks.map((social, index) => (
                     <motion.a
@@ -183,7 +186,7 @@ const Contact = () => {
                       rel="noopener noreferrer"
                       className="social-link"
                       variants={itemVariants}
-                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       style={{ '--social-color': social.color }}
                       aria-label={social.name}
@@ -197,31 +200,36 @@ const Contact = () => {
 
             {/* Right Side - Contact Form */}
             <motion.div className="contact-right" variants={itemVariants}>
+              <motion.h3 className="form-title" variants={itemVariants}>
+                Send a Message
+              </motion.h3>
               <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your name"
-                  />
-                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your name"
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="your.email@example.com"
-                  />
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="your@email.com"
+                    />
+                  </div>
                 </div>
 
                 <div className="form-group">
@@ -233,7 +241,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    placeholder="What is this regarding?"
+                    placeholder="Social media management, consultation, etc."
                   />
                 </div>
 
@@ -246,7 +254,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="6"
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell me about your social media management needs, project requirements, or collaboration opportunity..."
                   ></textarea>
                 </div>
 
@@ -260,7 +268,7 @@ const Contact = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Send Message
+                  Send Message <FaPaperPlane />
                 </motion.button>
               </form>
             </motion.div>
