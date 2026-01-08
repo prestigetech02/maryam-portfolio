@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import { FaGraduationCap } from 'react-icons/fa'
 import './Education.css'
 
 const Education = () => {
@@ -62,18 +61,37 @@ const Education = () => {
           <motion.h2 className="section-title" variants={itemVariants}>
             Education
           </motion.h2>
-          <motion.div className="education-card" variants={itemVariants}>
-            <div className="education-icon">
-              <FaGraduationCap />
-            </div>
-            <div className="education-details">
-              <h3 className="education-degree">OND (Mass Communication)</h3>
-              <p className="education-institution">
-                Moshhod Abiola Polytechnic
-              </p>
-              <p className="education-year">Graduated: 2019</p>
-            </div>
-          </motion.div>
+          <div className="education-grid">
+            <motion.div className="education-card" variants={itemVariants}>
+              <div className="education-details">
+                <h3 className="education-degree">OND (Mass Communication)</h3>
+                <p className="education-institution">
+                  Moshhod Abiola Polytechnic
+                </p>
+                <p className="education-year">Graduated: 2019</p>
+              </div>
+            </motion.div>
+
+            <motion.div className="education-card" variants={itemVariants}>
+              <div className="education-details">
+                <h3 className="education-degree">Social Media Management</h3>
+                <p className="education-institution">
+                  TechyX360 Technologies
+                </p>
+                <p className="education-year">2024</p>
+              </div>
+            </motion.div>
+
+            <motion.div className="education-card" variants={itemVariants}>
+              <div className="education-details">
+                <h3 className="education-degree">Graphics Design for Beginners</h3>
+                <p className="education-institution">
+                  DGI Africa
+                </p>
+                <p className="education-year">2024</p>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -3,11 +3,16 @@
   background: var(--bg-secondary);
 }
 
+.experience .container {
+  text-align: center;
+}
+
 .timeline {
   position: relative;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 4rem auto 0;
   padding-left: 2rem;
+  text-align: left;
 }
 
 .timeline::before {

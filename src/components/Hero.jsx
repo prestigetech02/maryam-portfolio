@@ -62,7 +62,7 @@ const Hero = () => {
             className="hero-title"
             variants={itemVariants}
           >
-            <span className="gradient-text">Oladunjoye Maryam</span>
+            <span className="gradient-text">Hi, I'm Maryam</span>
           </motion.h1>
           <motion.p className="hero-subtitle" variants={itemVariants}>
             Social Media Manager & Graphic Designer
@@ -76,8 +76,13 @@ const Hero = () => {
             <a href="#contact" className="btn btn-primary">
               Get In Touch
             </a>
-            <a href="#about" className="btn btn-secondary">
-              Learn More
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-secondary"
+            >
+              Resume
             </a>
           </motion.div>
         </motion.div>
@@ -87,7 +92,7 @@ const Hero = () => {
         >
           <div className="hero-image-container">
             <img 
-              src="/maryam-image.jpg" 
+              src="/0.png" 
               alt="Oladunjoye Maryam" 
               className="hero-image"
               onError={(e) => {
