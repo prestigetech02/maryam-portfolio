@@ -5,6 +5,7 @@
   justify-content: center;
   position: relative;
   padding: 2rem;
+  padding-top: 6rem;
   overflow: hidden;
 }
 
@@ -188,6 +189,7 @@
 @media (max-width: 640px) {
   .hero {
     padding: 1rem;
+    padding-top: 8rem;
   }
 
   .hero-description {

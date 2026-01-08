@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import ThemeToggle from './ThemeToggle'
 import './Navbar.css'
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,8 +45,20 @@ const Navbar = ({ theme, toggleTheme }) => {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setMenuOpen(false)
     }
   }
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [menuOpen])
 
   return (
     <motion.nav
@@ -57,7 +71,9 @@ const Navbar = ({ theme, toggleTheme }) => {
         <div className="nav-logo" onClick={() => scrollToSection('home')}>
           OM
         </div>
-        <ul className="nav-menu">
+        
+        {/* Desktop Menu */}
+        <ul className="nav-menu desktop-menu">
           {navItems.map((item) => (
             <li key={item.id}>
               <button
@@ -69,8 +85,52 @@ const Navbar = ({ theme, toggleTheme }) => {
             </li>
           ))}
         </ul>
-        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+
+        {/* Mobile Menu Toggle & Theme Toggle */}
+        <div className="nav-actions">
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          <button
+            className="hamburger-menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMenuOpen(false)}
+          >
+            <motion.ul
+              className="mobile-menu"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
+                    onClick={() => scrollToSection(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
