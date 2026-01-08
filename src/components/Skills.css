@@ -1,0 +1,125 @@
+.skills {
+  padding: 6rem 2rem;
+  background: var(--bg-primary);
+}
+
+.skills-content {
+  margin-top: 4rem;
+}
+
+.skills-section,
+.tools-section {
+  margin-bottom: 4rem;
+}
+
+.subsection-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.skill-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-secondary);
+}
+
+.skill-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.tools-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.tool-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 150px;
+  width: 150px;
+  flex: 0 0 auto;
+}
+
+.tool-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-secondary);
+}
+
+.tool-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .skills {
+    padding: 4rem 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tools-grid {
+    gap: 1rem;
+  }
+
+  .tool-icon {
+    font-size: 2.5rem;
+  }
+}
+
